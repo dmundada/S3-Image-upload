@@ -21,7 +21,7 @@ const Signup = (props) => {
 
   const handleUpload =async (event)=>{
     event.preventDefault();
-    const { url } = await fetch("http://localhost:5000/s3Url").then(res => res.json())
+    const { url } = await fetch("http://localhost:5000/s3Url/"+file.name).then(res => res.json())
     console.log(url)
     await fetch(url, {
       method: "PUT",
@@ -63,6 +63,7 @@ const Signup = (props) => {
       navigate('/',{state: json.user});
       props.showAlert("Account created successfully", "success")
     } else {
+      console.log("json",json)
       props.showAlert(json.error, "danger")
     }
   };

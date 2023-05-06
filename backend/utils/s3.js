@@ -12,10 +12,10 @@ const s3 = new aws.S3({
   signatureVersion: 'v4'
 })
 
-  function generateUploadURL() {
+  function generateUploadURL(image) {
 const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 
-  const imageName = genRanHex(12)
+  const imageName = image+genRanHex(12)
 
   const params = ({
     Bucket: bucketName,

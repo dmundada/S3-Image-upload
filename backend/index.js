@@ -10,9 +10,8 @@ const port = 5000
 app.get('/',(req,res)=>{
   res.send("Hello")
 })
-app.get('/s3Url', async (req, res) => {
-  console.log(req.body)
-  const url = await generateUploadURL()
+app.get('/s3Url/:imageName', async (req, res) => {
+  const url = await generateUploadURL(req.params.imageName)
   res.send({url})
 })
 
